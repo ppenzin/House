@@ -14,6 +14,18 @@ GRUBDIR	= /boot/grub/
 MPOINT	= $(TOP)/floppy_dir
 FLOPPYSIZE=1440
 
+# Some system settings
+UNAME   = $(shell uname)
+MD5     = md5_UNDEFINED
+ifeq ($(UNAME), FreeBSD)
+    MD5 = md5
+else
+ifeq ($(UNAME), Linux)
+else
+    MD5 = md5sum
+endif
+endif
+
 all:
 	@$(MAKE) -C support
 	@$(MAKE) $(KERNEL)
@@ -31,7 +43,7 @@ boot:
 	  wget $(GHCURL)/$(GHCSRC) ;\
         fi
 	@echo -n "Testing checksum of $(GHCSRC)..."
-	@if echo "$(GHCMD5)  $(GHCSRC)" | md5sum -c > /dev/null ; then \
+	@if $(MD5) -c $(GHCMD5)  $(GHCSRC) > /dev/null ; then \
 	  echo OK ;\
 	else \
 	  echo "failed!" ;\
@@ -46,7 +58,7 @@ boot:
 	  rm -rf $(GHCTOP) ;\
 	fi
 	@echo "Unpacking $(GHCSRC)..."
-	@tar --get --bzip2 --file $(GHCSRC)
+	@tar -xvjf $(GHCSRC)
 	@echo "Done.  Now please do 'make'."
 
 floppy: hOp.flp

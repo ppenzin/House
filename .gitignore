@@ -1,3 +1,5 @@
 *.o
 *.hi
 ghc*
+floppy_dir
+patch-stamp

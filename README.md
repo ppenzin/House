@@ -10,3 +10,5 @@ http://programatica.cs.pdx.edu/House/
 
 I just needed to make some modification, therefore pulled it on Github
 
+# Dependencies
+Gmake -- Use GNU Make, even if you are not on Linux
