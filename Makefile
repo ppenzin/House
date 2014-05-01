@@ -18,11 +18,10 @@ FLOPPYSIZE=1440
 UNAME   = $(shell uname)
 MD5     = md5_UNDEFINED
 ifeq ($(UNAME), FreeBSD)
-    MD5 = md5
+    MD5 = md5 -c $(GHCMD5) $(GHCSRC)
 else
 ifeq ($(UNAME), Linux)
-else
-    MD5 = md5sum
+    MD5 = echo "$(GHCMD5)  $(GHCSRC)" | md5sum -c
 endif
 endif
 
@@ -43,7 +42,7 @@ boot:
 	  wget $(GHCURL)/$(GHCSRC) ;\
         fi
 	@echo -n "Testing checksum of $(GHCSRC)..."
-	@if $(MD5) -c $(GHCMD5)  $(GHCSRC) > /dev/null ; then \
+	@if $(MD5) > /dev/null ; then \
 	  echo OK ;\
 	else \
 	  echo "failed!" ;\
