@@ -1,1 +1,0 @@
-ghc Main.hs -package objectio --make -o Worm.exe -i..\Utilities -optl "-Wl,--subsystem,windows"

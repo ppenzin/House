@@ -1,1 +1,0 @@
-ghc Main.hs -package objectio -o Slide.exe -optl "-Wl,--subsystem,windows"

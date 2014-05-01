@@ -1,5 +1,0 @@
-<!DOCTYPE norback [
-  <!ELEMENT test (one|two)*>
-  <!ELEMENT one EMPTY>
-  <!ELEMENT two EMPTY>
-]>

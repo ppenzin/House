@@ -1,1 +1,0 @@
-ghc Main.hs --make -package objectio -o classes.exe -optl "-Wl,--subsystem,windows"

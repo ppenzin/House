@@ -1,4 +1,0 @@
-__interface MkId 1 0 where
-__export MkId mkDataConWorkId ;
-1 mkDataConWorkId :: Name.Name -> DataCon.DataCon -> Var.Id ;
-

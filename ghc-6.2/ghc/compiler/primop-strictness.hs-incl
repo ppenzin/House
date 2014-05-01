@@ -1,2 +1,0 @@
-primOpStrictness RaiseOp =  \ arity -> mkStrictSig (mkTopDmdType [lazyDmd] BotRes) 
-primOpStrictness other =  \ arity -> mkStrictSig (mkTopDmdType (replicate arity lazyDmd) TopRes) 
